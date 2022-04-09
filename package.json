@@ -34,13 +34,13 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint": "eslint --debug src/",
-    "lint:write": "eslint --debug src/ --fix",
-    "prettier": "prettier --write src/**/*.js"
+    "lint": "eslint src/",
+    "lint:write": "eslint src/ --fix",
+    "prettier": "prettier --write src/**/*.{js,jsx,css,scss}"
   },
   "lint-staged": {
-    "*.{jsx,js}": "eslint --fix",
-    "*.{css,scss,json}": "prettier --write"
+    "*.{css,scss,json}": "prettier --write",
+    "*.{jsx,js}": "eslint --fix"
   },
   "eslintConfig": {
     "extends": [
