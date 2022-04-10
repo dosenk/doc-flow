@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.0",
     "@mui/lab": "^5.0.0-alpha.76",
     "@mui/material": "^5.6.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
@@ -39,8 +39,7 @@
     "prettier": "prettier --write src/**/*.{js,jsx,css,scss}"
   },
   "lint-staged": {
-    "*.{css,scss,json}": "prettier --write",
-    "*.{jsx,js}": "eslint --fix"
+    "*.{css,scss,json}": "prettier --write"
   },
   "eslintConfig": {
     "extends": [

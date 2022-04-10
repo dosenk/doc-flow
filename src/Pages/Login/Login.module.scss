@@ -1,0 +1,19 @@
+.login {
+  //background-color: #8bc2b6;
+  width: 400px;
+  height: fit-content;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    &_form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}
