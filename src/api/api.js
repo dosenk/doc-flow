@@ -19,24 +19,26 @@ $api.interceptors.response.use(
     return config;
   },
   async (error) => {
+    // console.log(error.response);
     const originalRequest = error.config;
-    if (error.response.status === 401) {
-      const result = await axios
-        .get(`${API_URL}/api/refresh`, {
-          withCredentials: true
-        })
-        .then((res) => {
-          setAccessToken(res.data.accessToken);
-          return $api.request(originalRequest);
-        })
-        .catch(() => {
-          removeAccessToken();
-          if (typeof window !== 'undefined') {
-            window.location.href = 'http://localhost:3001/login';
-          }
-        });
-      return result;
-    }
+    // if (error.response.status === 401) {
+    //   const result = await axios
+    //     .get(`${API_URL}/api/refresh`, {
+    //       withCredentials: true
+    //     })
+    //     .then((res) => {
+    //       setAccessToken(res.data.accessToken);
+    //       return $api.request(originalRequest);
+    //     })
+    //     .catch((e) => {
+    //       // console.log(e.message);
+    //       removeAccessToken();
+    //       if (typeof window !== 'undefined') {
+    //         // window.location.href = 'http://localhost:3001/login';
+    //       }
+    //     });
+    //   return result;
+    // }
     if (error.response.status === 400) {
       console.log(error.response.status);
     }

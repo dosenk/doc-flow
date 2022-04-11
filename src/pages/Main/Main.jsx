@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Grid } from '@mui/material';
 import React from 'react';
-import PageName from '../../Components/PageName/PageName';
+import PageName from '../../components/PageName/PageName';
 
 function Main() {
   return (

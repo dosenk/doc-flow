@@ -8,6 +8,8 @@
     "@mui/icons-material": "^5.6.0",
     "@mui/lab": "^5.0.0-alpha.76",
     "@mui/material": "^5.6.0",
+    "@mui/styles": "^5.6.0",
+    "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
@@ -71,5 +73,6 @@
     "husky": "^7.0.0",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.2"
-  }
+  },
+  "proxy": "http://192.168.100.14:8080"
 }

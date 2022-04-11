@@ -18,6 +18,7 @@ const updateAccessToken = async (action, data) => {
   if (status === 'error') throw new Error(receiveData);
 
   const { accessToken } = receiveData;
+  console.log(accessToken);
   setAccessToken(accessToken);
   return accessToken;
 };

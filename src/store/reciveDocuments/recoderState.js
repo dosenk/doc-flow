@@ -1,4 +1,4 @@
-import { SET_DOC, SET_SAVE_DOC } from './constatants/constatnts';
+import { SET_DOC, SET_SAVE_DOC } from './constatnts';
 
 const initState = { documents: [], savedDocuments: [] };
 
@@ -17,6 +17,8 @@ export const setSavedDocuments = (index) => {
 };
 
 const RecoderState = (action, state = initState) => {
+  console.log(action);
+  if (!action) return state;
   switch (action.type) {
     case SET_DOC: {
       action.recoderState.isVerified = false;

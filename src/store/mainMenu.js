@@ -11,16 +11,16 @@ export const initState = {
           name: 'Полученные документы',
           children: null,
           role: ['Администратор', 'Регистратор'],
-          url: '/main/recivedDocuments',
+          url: '/main/recivedDocuments'
         },
         {
           id: 12,
           name: 'Таблица объектов',
           children: null,
           role: ['Администратор', 'Регистратор'],
-          url: '/main/table',
-        },
-      ],
+          url: '/main/table'
+        }
+      ]
     },
     {
       id: 2,
@@ -33,9 +33,9 @@ export const initState = {
           name: 'Редактирование',
           children: null,
           role: ['Администратор', 'Регистратор'],
-          url: '/statistics',
-        },
-      ],
+          url: '/statistics'
+        }
+      ]
     },
     {
       id: 3,
@@ -48,16 +48,16 @@ export const initState = {
           name: 'Статистика',
           children: null,
           role: ['Администратор'],
-          url: '/statistics',
+          url: '/statistics'
         },
         {
           id: 32,
           name: 'Графики',
           children: null,
           role: ['Администратор'],
-          url: '/сharts',
-        },
-      ],
+          url: '/сharts'
+        }
+      ]
     },
     {
       id: 4,
@@ -70,12 +70,12 @@ export const initState = {
           name: 'Пользователи',
           children: null,
           role: ['Администратор'],
-          url: '/administration/users',
-        },
-      ],
-    },
+          url: '/administration/users'
+        }
+      ]
+    }
   ],
-  active: null,
+  active: null
 };
 
 const SET_ACTIVE = 'SET_ACTIVE';
@@ -83,11 +83,12 @@ const SET_ACTIVE = 'SET_ACTIVE';
 const setActiveMenu = (active) => {
   return {
     type: 'SET_ACTIVE',
-    active,
+    active
   };
 };
 
-const Menu = (state = initState, action) => {
+const Menu = (action, state = initState) => {
+  if (!action) return state;
   switch (action.type) {
     case SET_ACTIVE:
       return { ...state, active: action.active };
@@ -97,7 +98,7 @@ const Menu = (state = initState, action) => {
 };
 
 export const menuActionCreators = {
-  setActiveMenu,
+  setActiveMenu
 };
 
 export default Menu;

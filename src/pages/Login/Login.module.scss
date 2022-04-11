@@ -1,7 +1,11 @@
 .login {
-  //background-color: #8bc2b6;
-  width: 400px;
+  width: 500px !important;
   height: fit-content;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
   &__container {
     display: flex;
     flex-direction: column;

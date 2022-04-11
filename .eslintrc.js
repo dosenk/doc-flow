@@ -23,6 +23,7 @@ module.exports = {
     semi: 0,
     'comma-dangle': 0,
     'prettier/prettier': 'error',
+    'no-unused-vars': 0,
     // 'prettier/prettier': [
     //   0,
     //   {

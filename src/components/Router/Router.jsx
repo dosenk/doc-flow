@@ -1,21 +1,28 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Layout from '../../layouts/Layout';
-import Main from '../../Pages/Main/Main';
+import Main from '../../pages/Main/Main';
+import Login from '../../pages/Login/Login';
 
 const Router = () => {
+  const { isLogin } = useSelector((state) => state.auth);
+  // console.log(isLogin);
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index path="/main" element={<Main />} />
-      </Route>
-      {/* <Route path="/main" element={<Layout />}> */}
-      {/*  <Route path="/table" element={<TableObjects />} /> */}
-      {/*  <Route path="/recivedDocuments" element={<ReceivedDocuments />} /> */}
-      {/* </Route> */}
-      {/* <Route path="/administration" element={<Layout />}> */}
-      {/*  <Route path="/users" element={<Users />} /> */}
-      {/* </Route> */}
+      {isLogin ? (
+        <Route path="/" element={<Layout />}>
+          <Route index path="main" element={<Main />} />
+          <Route path="*" element={<Navigate to="/main" replace />} />
+          <Route path="/" element={<Navigate to="/main" replace />} />
+        </Route>
+      ) : (
+        <Route path="/">
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      )}
     </Routes>
   );
 };

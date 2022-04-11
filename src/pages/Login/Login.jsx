@@ -1,24 +1,24 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import * as React from 'react';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { Button, CssBaseline, Avatar, Box, Typography, Container } from '@mui/material';
-import PropTypes from 'prop-types';
-import { setErrorAction, signInAction } from '../../store/auth';
+import { useDispatch, useSelector } from 'react-redux';
 import useNotification from '../../hooks/useNotification/useNotification';
 import Preloader from '../../components/Preloader/Preloader';
 import FormInput from '../../components/FormElements/FormInput/FormInput';
 import styles from './Login.module.scss';
 import Copyright from './Copyright/Copiright';
+import { signInAction } from '../../store/auth/authActions';
 
 // const passwordPattern =
 //   "^(?=.*[0-9])(?=.*[!@#$%^&*()_+|~\\-=`\\{\\}\\[\\]:«;'<>?,.\\/])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()_+|~\\-=`\\{\\}\\[\\]:«;'<>?,.\\/]{8,25}$";
 
-const Login = ({ auth, signIn, setError }) => {
-  const { isLoading, error } = auth;
+const Login = () => {
+  const dispatch = useDispatch();
+  const { error, status } = useSelector((state) => state.auth);
+  const isLoading = status === 'loading';
   // const [initState, setInitState] = useState({
   //   login: '',
   //   password: ''
@@ -26,15 +26,15 @@ const Login = ({ auth, signIn, setError }) => {
   const renderSnackBar = useNotification();
 
   useEffect(() => {
-    if (error) {
-      setError('');
+    if (status === 'failed') {
       renderSnackBar(error, 'error');
     }
-  }, [error]);
+  }, [status]);
 
   const handleSubmit = ({ login, password }) => {
     // setInitState({ login, password });
-    signIn(login, password);
+    // signIn(login, password);
+    dispatch(signInAction({ login, password }));
     // setSubmitting(false);
     // resetForm({
     //   values: { login: "asda", password },
@@ -94,23 +94,13 @@ const Login = ({ auth, signIn, setError }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth
-  };
-};
+export default Login;
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ signIn: signInAction, setError: setErrorAction }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-Login.propTypes = {
-  auth: PropTypes.shape({
-    isLoading: PropTypes.bool,
-    error: PropTypes.string
-  }),
-  signIn: PropTypes.func,
-  setError: PropTypes.func
-};
+// Login.propTypes = {
+//   auth: PropTypes.shape({
+//     isLoading: PropTypes.bool,
+//     error: PropTypes.string
+//   }),
+//   signIn: PropTypes.func,
+//   setError: PropTypes.func
+// };
