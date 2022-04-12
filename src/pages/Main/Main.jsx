@@ -6,7 +6,7 @@ import PageName from '../../components/PageName/PageName';
 
 function Main() {
   return (
-    <Grid>
+    <Grid style={{ width: 'inherit' }}>
       <PageName value="Документооборот" isLoading={false} />
     </Grid>
   );

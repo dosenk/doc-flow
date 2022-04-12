@@ -5,8 +5,6 @@ import authReducer from './auth/authReducer';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducers = combineReducers({
-  // recoderState: RecoderState,
-  // mainMenu: MainMenu,
   auth: authReducer
 });
 
