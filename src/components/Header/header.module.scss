@@ -1,0 +1,48 @@
+.appbar {
+  width: 100%;
+  position: relative !important;
+  height: 64px;
+  z-index: 0;
+  background: #004d40;
+
+  &__user {
+    flex-grow: 0;
+    margin-left: 40px;
+    &_iconButton {
+      padding: 0;
+      border: 2px solid #ffffff !important;
+      width: 38px !important;
+      height: 38px !important;
+    }
+    &_icon {
+      width: 34px !important;
+      height: 34px !important;
+      color: #fff;
+    }
+  }
+
+  &__menu_navlink {
+    text-decoration: none;
+    color: #004d40;
+  }
+
+  &__container {
+    flex-grow: 1;
+    display: flex;
+    margin-left: 10px;
+
+    &_button {
+      margin: 5px !important;
+      color: rgba(0, 0, 0, 0.67) !important;
+      display: block !important;
+      border-color: rgba(0, 43, 27, 0.67) !important;
+      background: #00584e !important;
+
+      &:hover {
+        background-color: #004d40 !important;
+        color: white !important;
+        border-color: #00695c !important;
+      }
+    }
+  }
+}

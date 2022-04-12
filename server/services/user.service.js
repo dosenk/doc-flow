@@ -53,7 +53,6 @@ class UserService {
     const userData = tokenService.validateRefreshToken(refreshToken);
 
     const tokenFromDb = await tokenService.findToken(refreshToken);
-    console.log(!tokenFromDb);
     if (!userData || !tokenFromDb) {
       throw ApiError.UnauthorisedError('Истекло время сессии');
     }

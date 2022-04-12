@@ -1,7 +1,7 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import './index.css';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
 import { createTheme, ThemeProvider } from '@mui/material';
@@ -10,6 +10,10 @@ import { teal, blueGrey, lime } from '@mui/material/colors';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
+import history from './components/Router/history';
+import { getAccessToken, removeAccessToken } from './services/auth.service';
+import { checkAuthAction } from './store/auth/authActions';
+import { logout } from './store/auth/authReducer';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -44,20 +48,24 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+if (getAccessToken()) store.dispatch(checkAuthAction());
+else {
+  removeAccessToken();
+  store.dispatch(logout());
+}
+
 const RootApp = () => {
   const classes = useStyles();
   return (
-    <StrictMode>
-      <Provider store={store}>
-        <BrowserRouter>
-          <ThemeProvider theme={theme}>
-            <SnackbarProvider maxSnack={3} classes={{ variantSuccess: classes.success }}>
-              <App />
-            </SnackbarProvider>
-          </ThemeProvider>
-        </BrowserRouter>
-      </Provider>
-    </StrictMode>
+    <Provider store={store}>
+      <HistoryRouter history={history}>
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider maxSnack={3} classes={{ variantSuccess: classes.success }}>
+            <App />
+          </SnackbarProvider>
+        </ThemeProvider>
+      </HistoryRouter>
+    </Provider>
   );
 };
 

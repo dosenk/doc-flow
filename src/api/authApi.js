@@ -25,12 +25,16 @@ export const signOutApi = async () => {
   }
 };
 
-export const getTokenApi = async (action, data = null) => {
+export const getTokenApi = async (action, data) => {
   const res = action === 'update' ? await updateTokenApi() : await signInApi(data);
   return res;
 };
 
 getTokenApi.prototype = {
   action: PropTypes.oneOf(['update', 'login']),
-  data: PropTypes.object
+  data: PropTypes.shape({ login: PropTypes.string, password: PropTypes.string })
+};
+
+getTokenApi.defaultProps = {
+  data: null
 };

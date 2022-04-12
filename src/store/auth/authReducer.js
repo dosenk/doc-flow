@@ -3,7 +3,6 @@ import { checkAuthAction, signInAction, signOutAction } from './authActions';
 
 const authAdapter = createEntityAdapter();
 const initialState = authAdapter.getInitialState({
-  // isLoading: false,
   isLogin: false,
   status: 'idle',
   error: null,
@@ -46,8 +45,10 @@ const authSlice = createSlice({
         state.error = '';
       })
       .addCase(signOutAction.fulfilled, (state) => {
-        state.status = 'succeeded';
-        state = initialState;
+        state.isLogin = false;
+        state.status = 'idle';
+        state.error = null;
+        state.data = initialState.data;
       })
       .addCase(signOutAction.rejected, (state, action) => {
         state.status = 'failed';
@@ -59,7 +60,6 @@ const authSlice = createSlice({
         state.error = '';
       })
       .addCase(checkAuthAction.fulfilled, (state, action) => {
-        console.log(action);
         state.status = 'succeeded';
         state.isLogin = true;
         state.error = '';

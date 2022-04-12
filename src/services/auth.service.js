@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { getTokenApi } from '../api/authApi';
 
 const setAccessToken = (accessToken) => {
@@ -15,12 +16,21 @@ const getAccessToken = () => {
 const updateAccessToken = async (action, data) => {
   const { status, data: receiveData } = await getTokenApi(action, data);
 
-  if (status === 'error') throw new Error(receiveData);
+  if (status !== 200) throw new Error(receiveData);
 
   const { accessToken } = receiveData;
-  console.log(accessToken);
+
   setAccessToken(accessToken);
   return accessToken;
 };
 
 export { setAccessToken, removeAccessToken, getAccessToken, updateAccessToken };
+
+updateAccessToken.propTypes = {
+  action: PropTypes.oneOf(['update', 'login']),
+  data: PropTypes.shape({ login: PropTypes.string, password: PropTypes.string })
+};
+
+setAccessToken.propTypes = {
+  accessToken: PropTypes.string.isRequired
+};

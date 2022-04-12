@@ -4,11 +4,15 @@ import { useSelector } from 'react-redux';
 import Layout from '../../layouts/Layout';
 import Main from '../../pages/Main/Main';
 import Login from '../../pages/Login/Login';
+import Preloader from '../Preloader/Preloader';
 
 const Router = () => {
-  const { isLogin } = useSelector((state) => state.auth);
-  // console.log(isLogin);
-  return (
+  const { isLogin, status } = useSelector((state) => state.auth);
+  const isLoading = status === 'loading';
+
+  return isLoading ? (
+    <Preloader />
+  ) : (
     <Routes>
       {isLogin ? (
         <Route path="/" element={<Layout />}>

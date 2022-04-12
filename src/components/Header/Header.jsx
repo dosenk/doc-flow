@@ -1,18 +1,28 @@
-import React from 'react';
-import logo from '../../logo.svg';
+import React, { useState } from 'react';
+import { Mail as MailIcon } from '@mui/icons-material';
+import { Badge, Container, Typography, Toolbar, Box, AppBar } from '@mui/material';
+import cl from './header.module.scss';
+import UserMenu from './UserMenu/UserMenu';
+import HeaderNavlink from './HeaderNavlink/HeaderNavlink';
 
 const Header = () => {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
+    <AppBar className={cl.appbar}>
+      <Container maxWidth="xxl">
+        <Toolbar disableGutters>
+          <Typography variant="h5" noWrap component="div">
+            Модуль документооборота
+          </Typography>
+          <HeaderNavlink />
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
+            <Badge badgeContent={1} color="error">
+              <MailIcon color="action" />
+            </Badge>
+          </Box>
+          <UserMenu />
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 
