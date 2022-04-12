@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6280bb3c-5e53-4a27-a259-010421fe03d5" name="doc-flow(100.14)" url="http://192.168.100.14">
+        <fileTransfer rootFolder="/root/recoder" accessType="SFTP" host="192.168.100.14" port="22" sshConfigId="393faa39-8d1c-4a67-887a-5f86f5286f4f" sshConfig="root@192.168.100.14:22:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
