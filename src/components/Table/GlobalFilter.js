@@ -1,8 +1,10 @@
 import React from 'react';
-
-import InputBase from '@material-ui/core/InputBase';
-import { alpha, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
+import { InputBase } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+// import { makeStyles } from '@mui/styles';
+// import { alpha } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -10,16 +12,16 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     top: '-50px',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: theme.palette.common.white,
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+      backgroundColor: theme.palette.common.white
     },
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -28,10 +30,10 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'inherit'
   },
   inputInput: {
     margin: theme.spacing(1, 1, 1, 6),
@@ -40,9 +42,9 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: 200,
-    },
-  },
+      width: 200
+    }
+  }
 }));
 
 const GlobalFilter = ({ preGlobalFilteredRows, globalFilter, setGlobalFilter, language }) => {
@@ -66,7 +68,7 @@ const GlobalFilter = ({ preGlobalFilteredRows, globalFilter, setGlobalFilter, la
         placeholder="Поиск"
         classes={{
           root: classes.inputRoot,
-          input: classes.inputInput,
+          input: classes.inputInput
         }}
         inputProps={{ 'aria-label': 'search' }}
       />
@@ -75,3 +77,10 @@ const GlobalFilter = ({ preGlobalFilteredRows, globalFilter, setGlobalFilter, la
 };
 
 export default GlobalFilter;
+
+GlobalFilter.propTypes = {
+  preGlobalFilteredRows: PropTypes.func,
+  globalFilter: PropTypes.string,
+  setGlobalFilter: PropTypes.func,
+  language: PropTypes.string
+};

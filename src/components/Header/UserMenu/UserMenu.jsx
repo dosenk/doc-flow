@@ -27,7 +27,7 @@ const UserMenu = () => {
   const menuActions = { handleLogout };
 
   return (
-    <>
+    <div>
       <Box className={cl.appbar__user}>
         <Tooltip title="Пользователь">
           <IconButton onClick={handleOpenUserMenu} className={cl.appbar__user_iconButton}>
@@ -59,7 +59,7 @@ const UserMenu = () => {
           </MenuItem>
         ))}
       </Menu>
-    </>
+    </div>
   );
 };
 

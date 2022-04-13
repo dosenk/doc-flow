@@ -24,7 +24,7 @@ const Login = () => {
   //   password: ''
   // });
   const renderSnackBar = useNotification();
-
+  console.log(error, status);
   useEffect(() => {
     if (status === 'failed') {
       renderSnackBar(error, 'error');

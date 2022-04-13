@@ -1,17 +1,19 @@
 import UserRow from './UserRow/UserRow';
 
 const BTNS = [
-  {
-    id: 1,
-    action: 'handleAdd',
-    name: 'Добавить'
-  },
-  {
-    id: 2,
-    action: 'handleDel',
-    name: 'Удалить'
-  },
-  { id: 3, action: 'handleRefresh', name: 'Обновить' }
+  [
+    {
+      id: 1,
+      action: 'handleAdd',
+      name: 'Добавить'
+    },
+    {
+      id: 2,
+      action: 'handleDel',
+      name: 'Удалить'
+    },
+    { id: 3, action: 'handleRefresh', name: 'Обновить' }
+  ]
 ];
 
 const TABLE_COLUMNS = [

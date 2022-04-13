@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useEffect, forwardRef, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  makeStyles,
-  Checkbox,
+  Table as MaUTable,
   TableBody,
   TableCell,
   TableContainer,
@@ -12,52 +11,30 @@ import {
   TableRow,
   TableSortLabel,
   CircularProgress,
-  Box,
-} from '@material-ui/core';
-import MaUTable from '@material-ui/core/Table';
+  Box
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
+import PropTypes from 'prop-types';
 import TablePaginationActions from './TablePaginationActions';
 import GlobalFilter from './GlobalFilter';
+import cl from './Table.module.scss';
 
-const useStylesCheckbox = makeStyles({
-  root: {
-    padding: 5,
-  },
-});
-
-const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
-  const classesCheckbox = useStylesCheckbox();
-  const defaultRef = useRef();
-  const resolvedRef = ref || defaultRef;
-
-  useEffect(() => {
-    resolvedRef.current.indeterminate = indeterminate;
-  }, [resolvedRef, indeterminate]);
-
-  return <Checkbox ref={resolvedRef} {...rest} className={classesCheckbox.root} />;
-});
-
-const useStylesTdHead = makeStyles({
-  root: {
-    color: '#ffffff',
-    padding: 0,
-  },
-});
 const useStylesTd = makeStyles({
   root: {
     padding: 0,
-    textAlign: 'center',
+    textAlign: 'center'
     // '& '
-  },
+  }
 });
 
 const useStyleSortLabel = makeStyles({
   root: {
     color: '#ffffff !important',
     '& .MuiTableSortLabel-icon': {
-      color: '#ffffff !important',
-    },
-  },
+      color: '#ffffff !important'
+    }
+  }
 });
 
 const Table = ({
@@ -75,15 +52,14 @@ const Table = ({
   isSearch = false,
   isResetSelectedRow = true,
   style = {
-    footer: {},
+    footer: {}
   },
-  isLoading,
+  isLoading
 }) => {
   const selectedRowIds = {};
   if (selectedId !== null) selectedRowIds[selectedId] = true;
   const classesTd = useStylesTd();
   const classesSortLabel = useStyleSortLabel();
-  const classesTdHeader = useStylesTdHead();
 
   const {
     getTableProps,
@@ -95,7 +71,7 @@ const Table = ({
     preGlobalFilteredRows,
     setGlobalFilter,
     toggleAllRowsSelected,
-    state: { pageIndex, pageSize, globalFilter },
+    state: { pageIndex, pageSize, globalFilter }
   } = useTable(
     {
       columns,
@@ -106,12 +82,12 @@ const Table = ({
         sortBy: [
           {
             id: sortBy,
-            desc: isDescSortDirection,
-          },
+            desc: isDescSortDirection
+          }
         ],
-        selectedRowIds, // id of array (start from 0)
+        selectedRowIds // id of array (start from 0)
       },
-      ...resetPage,
+      ...resetPage
     },
     useGlobalFilter,
     useSortBy,
@@ -149,7 +125,7 @@ const Table = ({
             height: '100%',
             backgroundColor: 'rgba(159,161,159,0.5)',
             zIndex: '1000',
-            position: 'absolute',
+            position: 'absolute'
           }}
         >
           <CircularProgress
@@ -158,7 +134,7 @@ const Table = ({
               zIndex: '1000',
               left: '50%',
               top: '42%',
-              position: 'relative',
+              position: 'relative'
             }}
           />
         </Box>
@@ -185,10 +161,10 @@ const Table = ({
                 return (
                   <TableCell
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className={classesTdHeader.root}
+                    className={cl.table__headerCell}
                     style={{
                       width: column.width,
-                      cursor: column.id === 'selection' ? 'default' : 'pointer',
+                      cursor: column.id === 'selection' ? 'default' : 'pointer'
                     }}
                     align="center"
                   >
@@ -217,10 +193,10 @@ const Table = ({
                   height: '38px',
                   display: 'table-cell',
                   verticalAlign: 'middle',
-                  textAlign: 'center',
+                  textAlign: 'center'
                 }}
               >
-                "No such elements"
+                No such elements
               </td>
             </TableRow>
           ) : (
@@ -231,7 +207,7 @@ const Table = ({
                   style={{
                     cursor: 'pointer',
                     backgroundColor: row.isSelected ? '#efefee' : '#fff',
-                    height: '38px', // высота строки
+                    height: '38px !important' // высота строки
                   }}
                   {...row.getRowProps()}
                   onClick={() => {
@@ -241,7 +217,7 @@ const Table = ({
                 >
                   {row.cells.map((cell) => {
                     return (
-                      <TableCell {...cell.getCellProps()} className={classesTd.root}>
+                      <TableCell {...cell.getCellProps()} className={cl.table__cell} align="center">
                         {cell.render('Cell')}
                       </TableCell>
                     );
@@ -260,9 +236,9 @@ const Table = ({
               count={data.length}
               rowsPerPage={rowsPerPage}
               page={pageIndex}
-              labelRowsPerPage="Rows per page:"
+              labelRowsPerPage="Строк на странице:"
               labelDisplayedRows={({ from, to, count }) => {
-                return `${from}-${to} "in" ${count}`;
+                return `${from}-${to} из ${count}`;
               }}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
@@ -276,3 +252,21 @@ const Table = ({
 };
 
 export default Table;
+
+Table.propTypes = {
+  columns: PropTypes.instanceOf(Array),
+  data: PropTypes.instanceOf(Array),
+  skipPageReset: PropTypes.func,
+  resetPage: PropTypes.func,
+  onclick: PropTypes.func,
+  selectedId: PropTypes.number,
+  multipleSelector: PropTypes.bool,
+  onPageChangeClick: PropTypes.func,
+  rowsPerPageOptions: PropTypes.instanceOf(Array),
+  sortBy: PropTypes.string,
+  isDescSortDirection: PropTypes.bool,
+  isSearch: PropTypes.bool,
+  isResetSelectedRow: PropTypes.bool,
+  style: PropTypes.shape({ footer: PropTypes.shape({}) }),
+  isLoading: PropTypes.bool
+};

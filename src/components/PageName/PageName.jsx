@@ -6,7 +6,6 @@ const PageName = ({ value, isLoading }) => {
   return (
     <Box
       style={{
-        padding: '4px 11px 0px 11px',
         backgroundColor: '#fff',
         zIndex: 1000
       }}

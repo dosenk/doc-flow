@@ -8,7 +8,6 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { teal, blueGrey, lime } from '@mui/material/colors';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import store from './store/store';
 import history from './components/Router/history';
 import { getAccessToken, removeAccessToken } from './services/auth.service';
@@ -75,4 +74,3 @@ root.render(<RootApp />);
 // want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

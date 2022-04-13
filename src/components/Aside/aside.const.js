@@ -1,6 +1,12 @@
 // eslint-disable-next-line import/prefer-default-export
 export const MENU_LIST = [
   {
+    id: 5,
+    name: 'Инфо',
+    url: '/',
+    role: ['Администратор', 'Регистратор']
+  },
+  {
     id: 1,
     name: 'Постановка на контроль',
     url: '/main',
@@ -11,7 +17,7 @@ export const MENU_LIST = [
         name: 'Полученные документы',
         children: null,
         role: ['Администратор', 'Регистратор'],
-        url: '/main/recivedDocuments'
+        url: '/main/documents'
       },
       {
         id: 12,

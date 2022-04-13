@@ -14,7 +14,7 @@ const Layout = () => {
         <Grid container item xs={2}>
           <Aside />
         </Grid>
-        <Grid container item xs={10}>
+        <Grid container item xs={10} p={1}>
           <Outlet />
         </Grid>
       </Grid>
