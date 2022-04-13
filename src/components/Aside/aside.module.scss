@@ -8,7 +8,7 @@
   justify-content: space-between;
   // height: calc(100% - 69px);
 
-  .aside--menu-item {
+  .aside__menu_item {
     display: block;
     height: 24px;
     padding: 12px 0 12px 16px;
@@ -16,20 +16,23 @@
     color: #ffffff;
     cursor: pointer;
     border-top: 1px solid #e0e0e0;
+    &_title {
+      color: white;
+    }
   }
-  .aside-accordion {
+  .aside_accordion {
     background-color: transparent;
     color: #ffffff;
     margin: 2px 0 !important;
     box-shadow: 0px 2px 1px -1px rgb(224, 224, 224) !important;
-    .aside-accordion-list {
+    .aside_accordion_list {
       padding: 0;
       margin: 0;
-      .aside-accordion-list-ul {
+      .aside_accordion_list_ul {
         padding: 0;
         margin: 0;
         width: 100%;
-        .aside-accordion-list-ul-li {
+        .aside_accordion_list_ul_li {
           width: calc(100% - 30px);
 
           padding: 10px 0 10px 30px;
@@ -59,7 +62,7 @@
             }
           }
         }
-        .aside-accordion-list-ul-li-active {
+        .aside_accordion_list_ul_li_active {
           background-color: #00695c;
           a {
             // color: rgb(175, 175, 175);
@@ -73,12 +76,12 @@
         }
       }
     }
-    .aside-accordion-icon {
+    .aside_accordion_icon {
       color: #ffffff;
     }
   }
 
-  .aside--information {
+  .aside__information {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -87,7 +90,7 @@
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 1px;
-    .aside--information-item {
+    .aside__information_item {
       padding: 10px;
     }
   }

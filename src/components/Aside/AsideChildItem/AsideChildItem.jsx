@@ -2,16 +2,17 @@ import { NavLink } from 'react-router-dom';
 import { Typography } from '@mui/material';
 import React from 'react';
 import PropTypes from 'prop-types';
+import cl from '../aside.module.scss';
 
 const AsideChildItem = ({ childrenElement, setActive }) => {
   return (
-    <li className="aside-accordion-list-ul-li" role="presentation" key={childrenElement.id}>
+    <li className={cl.aside_accordion_list_ul_li} role="presentation" key={childrenElement.id}>
       <NavLink
         onClick={setActive(childrenElement)}
         to={childrenElement.url}
         key={childrenElement.id}
       >
-        <Typography className="aside-item-title">{childrenElement.name}</Typography>
+        <Typography className={cl.aside_item_title}>{childrenElement.name}</Typography>
       </NavLink>
     </li>
   );

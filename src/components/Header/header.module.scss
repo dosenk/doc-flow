@@ -1,9 +1,10 @@
+@use './src/styles/variables';
+
 .appbar {
   width: 100%;
   position: relative !important;
-  height: 64px;
+  height: variables.$header-height;
   z-index: 0;
-  background: #004d40;
 
   &__user {
     flex-grow: 0;

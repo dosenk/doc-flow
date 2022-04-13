@@ -7,7 +7,7 @@ import HeaderNavlink from './HeaderNavlink/HeaderNavlink';
 
 const Header = () => {
   return (
-    <AppBar className={cl.appbar}>
+    <AppBar className={cl.appbar} color="secondary">
       <Container maxWidth="xxl">
         <Toolbar disableGutters>
           <Typography variant="h5" noWrap component="div">

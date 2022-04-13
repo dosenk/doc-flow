@@ -4,12 +4,13 @@ import { Grid } from '@mui/material';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Aside from '../components/Aside/Aside';
+import cl from './layout.module.scss';
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <Grid container spacing={1} style={{ height: '100%' }}>
+      <Grid container className={cl.mainLayout}>
         <Grid container item xs={2}>
           <Aside />
         </Grid>
