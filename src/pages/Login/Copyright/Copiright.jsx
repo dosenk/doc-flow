@@ -8,7 +8,7 @@ const Copyright = (props) => {
       <Link color="inherit" href="https://github.com">
         00014
       </Link>
-      {new Date().getFullYear()}.
+      {` ${new Date().getFullYear()}`}.
     </Typography>
   );
 };
