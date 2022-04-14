@@ -1,3 +1,5 @@
+@use './src/styles/variables';
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -6,4 +8,5 @@
   display: flex;
   justify-content: center;
   font-size: smaller;
+  background-color: variables.$secondary-color;
 }

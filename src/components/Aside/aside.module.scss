@@ -1,8 +1,10 @@
+@use './src/styles/variables';
+
 .aside {
   margin-top: 3px;
   width: 100%;
   min-width: 200px;
-  background-color: #004d40;
+  background-color: variables.$secondary-color;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,7 +14,7 @@
     display: block;
     height: 24px;
     padding: 12px 0 12px 16px;
-    box-shadow: 0px 2px 1px -1px rgb(224, 224, 224);
+    box-shadow: 0 2px 1px -1px rgb(224, 224, 224);
     color: #ffffff;
     cursor: pointer;
     border-top: 1px solid #e0e0e0;
@@ -24,7 +26,7 @@
     background-color: transparent;
     color: #ffffff;
     margin: 2px 0 !important;
-    box-shadow: 0px 2px 1px -1px rgb(224, 224, 224) !important;
+    box-shadow: 0 2px 1px -1px rgb(224, 224, 224) !important;
     .aside_accordion_list {
       padding: 0;
       margin: 0;
@@ -63,15 +65,15 @@
           }
         }
         .aside_accordion_list_ul_li_active {
-          background-color: #00695c;
+          background-color: #424242;
           a {
             // color: rgb(175, 175, 175);
             text-decoration: underline;
-            color: #00251f;
+            color: #a8a8a8;
           }
 
           p {
-            font-weight: 600 !important;
+            font-weight: 500 !important;
           }
         }
       }

@@ -13,7 +13,7 @@ const Header = () => {
           <Typography variant="h5" noWrap component="div">
             Модуль документооборота
           </Typography>
-          <HeaderNavlink />
+          {/* <HeaderNavlink /> */}
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <Badge badgeContent={1} color="error">
               <MailIcon color="action" />
