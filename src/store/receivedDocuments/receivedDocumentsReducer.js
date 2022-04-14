@@ -6,21 +6,24 @@ import {
   clearDocumentsAction
 } from './receivedDocumentsActions';
 
-const authAdapter = createEntityAdapter();
-const initialState = authAdapter.getInitialState({ documents: [] });
+export const documentsAdapter = createEntityAdapter({
+  selectId: (doc) => doc.id
+});
+
+const initialState = documentsAdapter.getInitialState({ loading: 'idle' });
+export const docSelectors = documentsAdapter.getSelectors((state) => state.receivedDocuments);
 
 const ReceivedDocumentsSlice = createSlice({
-  name: 'receiveDocuments',
+  name: 'receivedDocuments',
   initialState,
   reducers: {
-    setDocuments: setDocumentsAction,
-    getDocument: getDocumentAction,
-    updateDocuments: updateDocumentsAction,
-    clearDocuments: clearDocumentsAction
+    addDocument: documentsAdapter.addOne
+    // updateDocuments: updateDocumentsAction,
+    // clearDocuments: clearDocumentsAction
   }
 });
 
-export const { setDocuments, getDocument, updateDocuments, clearDocuments } =
+export const { addDocument, getDocument, updateDocuments, clearDocuments } =
   ReceivedDocumentsSlice.actions;
 
 export default ReceivedDocumentsSlice.reducer;
