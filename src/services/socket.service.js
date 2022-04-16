@@ -3,11 +3,12 @@ import {
   DOCUMENT_IN_PROCESS,
   NOTIFICATION_ERROR
 } from '../hooks/useNotification/notification.constants';
+import { docSelectors, addDocument } from '../store/receivedDocuments/receivedDocumentsReducer';
 
-export const listenQrEvent = (socket, dispatch, addDocument) => {
+export const listenQrEvent = (socket, dispatch) => {
   socket.on('qrDataEvent', (args) => {
-    // console.log(args);
     dispatch(addDocument(args));
+
     // if (isSameValues(recoderState.documents, args)) setDocuments(args);
     // else renderSnackBar(DOCUMENT_IN_PROCESS, NOTIFICATION_ERROR);
   });

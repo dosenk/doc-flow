@@ -4,6 +4,7 @@ const router = express.Router();
 const otmController = require('../controllers/otm.controller');
 const baseController = require('../controllers/base.controller');
 const userController = require('../controllers/user.controller');
+const taskController = require('../controllers/tasks.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
 // api для ОТМ
@@ -11,6 +12,9 @@ router.get('/otm', authMiddleware, otmController.getAllOtm);
 router.get('/otm/:identy', otmController.getAllOtmByIdenty);
 router.get('/otm/active', otmController.getActiveOtm);
 router.get('/otm/active/:identy', otmController.getActiveOtmByIdenty);
+
+// api для Заданий
+router.post('/tasks', taskController.setTaskData);
 
 // api для постановлений
 router.get('/base', baseController.getAllBase);

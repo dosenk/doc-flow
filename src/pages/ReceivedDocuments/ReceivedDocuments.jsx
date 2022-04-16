@@ -1,19 +1,10 @@
 import React from 'react';
-import {
-  Box,
-  CircularProgress,
-  Grid,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText
-} from '@mui/material';
+import { Box, Grid, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { useSelector } from 'react-redux';
 import PageName from '../../components/PageName/PageName';
 import cl from './receivedDoc.module.scss';
-import { getNoun } from '../../utils/utils';
-import { declinationOfIdent } from './receivedDocuments.const';
 import { docSelectors } from '../../store/receivedDocuments/receivedDocumentsReducer';
+import DocumentItem from './DocumentItem/DocumentItem';
 
 const ReceivedDocuments = () => {
   const docs = useSelector(docSelectors.selectAll);
@@ -26,29 +17,7 @@ const ReceivedDocuments = () => {
           <List>
             {docs.length ? (
               docs.map((item, idx) => {
-                return (
-                  <Box key={item.id}>
-                    <ListItem divider>
-                      <ListItemButton>
-                        <ListItemText
-                          primary={`Задани${item.otmList.length === 1 ? 'e' : 'я'} ${
-                            item.iniciatorOfr
-                          }`}
-                          secondary={`${item.otmList.length}
-                            ${getNoun(item.otmList.length, ...declinationOfIdent)}`}
-                        />
-                        <Box>
-                          <Box className="documentIndex">{idx}</Box>
-                          {/* <Box>2 идентификатора присутствуют в базе данных</Box> */}
-                          <Box>{item.info?.base}</Box>
-                        </Box>
-                        <Box sx={{ marginLeft: '18px' }}>
-                          {item.isVerified ? '' : <CircularProgress />}
-                        </Box>
-                      </ListItemButton>
-                    </ListItem>
-                  </Box>
-                );
+                return <DocumentItem key={item.base.id} item={item} idx={idx} />;
               })
             ) : (
               <Box>

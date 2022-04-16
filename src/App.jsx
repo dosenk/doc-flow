@@ -5,14 +5,13 @@ import Router from './components/Router/Router';
 import { listenInfoEvents, listenQrEvent } from './services/socket.service';
 import Websocket from './components/Websocket/Websocket';
 import useNotification from './hooks/useNotification/useNotification';
-import { addDocument } from './store/receivedDocuments/receivedDocumentsReducer';
 
 const App = () => {
   const renderSnackBar = useNotification();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    listenQrEvent(Websocket, dispatch, addDocument);
+    listenQrEvent(Websocket, dispatch, useSelector, renderSnackBar);
     listenInfoEvents(Websocket);
   }, []);
 

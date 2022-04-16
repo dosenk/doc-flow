@@ -35,7 +35,6 @@ $api.interceptors.response.use(
           removeAccessToken();
           if (typeof window !== 'undefined') {
             history.push('/login');
-            // window.location.href = 'http://localhost:3001/login';
           }
         });
       return result;

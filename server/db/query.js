@@ -1,4 +1,4 @@
-const queryDB = async (pool, SQLquery, method) => {
+const queryDB = async (pool, SQLquery, method = 'ANY') => {
   const result = { status: 'ok' };
   try {
     result.data = await pool.query(SQLquery);
